@@ -13,10 +13,10 @@ const posts = [{
     id: 1,
     author: {
         name: "Grogu mando",
-        image: "https://unsplash.it/300/300?image=15"
+        image: "https://images.everyeye.it/img-notizie/come-nato-baby-yoda-possibili-origini-bambino-the-mandalorian-v4-495100-900x900.jpg"
     },
     created: "01-19-2022",
-    content: "Placeat libero ipsa nobis ipsum quibusdam quas harum ut. Distinctio minima iusto. Ad ad maiores et sint voluptate recusandae architecto. Et nihil ullam aut alias.",
+    content: "............................",
     media: "https://unsplash.it/600/300?image=120",
     likes: 8000,
 },
@@ -24,10 +24,10 @@ const posts = [{
     id: 2,
     author: {
         name: "Mando The Mandalorian",
-        image: "https://unsplash.it/300/300?image=12"
+        image: "https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/the-mandalorian-baby-yoda-season-2-1600179914.jpg?resize=640:*"
     },
     created: "02-20-2022",
-    content: "Placeat libero ipsa nobis ipsum quibusdam quas harum ut. Distinctio minima iusto. Ad ad maiores et sint voluptate recusandae architecto. Et nihil ullam aut alias.",
+    content: "A Mandalorian and a Jedi? They’ll never see it coming. — The Mandalorian",
     media: "https://unsplash.it/600/300?image=170",
     likes: 800,
 },
@@ -36,10 +36,10 @@ const posts = [{
     id: 3,
     author: {
         name: "Boba Fett",
-        image: "https://unsplash.it/300/300?image=13"
+        image: "https://i.guim.co.uk/img/media/12329e6418ae6531565d9016968fc1d45d0f38eb/711_0_2683_1610/master/2683.jpg?width=1200&height=1200&quality=85&auto=format&fit=crop&s=3b5b8087ebd9840a6e961319b1f70077"
     },
     created: "03-10-2022",
-    content: "Placeat libero ipsa nobis ipsum quibusdam quas harum ut. Distinctio minima iusto. Ad ad maiores et sint voluptate recusandae architecto. Et nihil ullam aut alias.",
+    content: "Let’s just say they might recognize my face. — Boba Fett",
     media: "https://unsplash.it/600/300?image=173",
     likes: 8,
 },
@@ -48,10 +48,10 @@ const posts = [{
     id: 4,
     author: {
         name: "Old Yoda",
-        image: "https://unsplash.it/300/300?image=18"
+        image: "https://www.liveabout.com/thmb/OHyay7RPSFHxasgJ9_Okz1Jhu-Q=/1167x1167/smart/filters:no_upscale()/yoda-56a8f97a3df78cf772a263b4.jpg"
     },
     created: "04-02-2022",
-    content: "Placeat libero ipsa nobis ipsum quibusdam quas harum ut. Distinctio minima iusto. Ad ad maiores et sint voluptate recusandae architecto. Et nihil ullam aut alias.",
+    content: "No. Try not. Do… or do not. There is no try.",
     media: null,
     likes: 80000,
 },
@@ -60,10 +60,10 @@ const posts = [{
     id: 5,
     author: {
         name: "Darth Maul",
-        image: "https://unsplash.it/300/300?image=19"
+        image: "https://www.postavy.cz/foto/darth-maul-foto.jpg"
     },
     created: "04-05-2022",
-    content: "Placeat libero ipsa nobis ipsum quibusdam quas harum ut. Distinctio minima iusto. Ad ad maiores et sint voluptate recusandae architecto. Et nihil ullam aut alias.",
+    content: "You have forgotten me, but I will never forget you! You cannot imagine the depths I would go to stay alive. Fueled by my singular hatred for you.",
     media: null,
     likes: 0,
 },
@@ -72,8 +72,12 @@ const posts = [{
 /* Milestone 2
 Prendendo come riferimento il layout di esempio presente nell'html, stampiamo i post del nostro feed. */
 let carouselContent = "";
-
-
+//bonus 1 formattare la data
+function convertDate(str) {
+    let d = str.split("-");
+    let dat = (d[1] + '/' + d[0] + '/' + d[2]);
+    return dat;   
+}
 
 posts.forEach((post, i,) =>{
 
@@ -87,7 +91,7 @@ posts.forEach((post, i,) =>{
                     </div>
                     <div class="d-flex flex-column justify-content-center">
                         <div class = "fw-bold">${posts[i].author.name}</div>
-                        <div class="fs_7">${posts[i].created}</div>
+                        <div class="fs_7">${convertDate(posts[i].created)}</div>
                     </div>                    
                 </div>
             </div>
