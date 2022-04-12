@@ -97,14 +97,14 @@ posts.forEach((post, i,) =>{
             </div>
             <div class="footer">
                 <div class="d-flex justify-content-around align-items-center ">
-                    <div >
+                    <div class="likes_bt">
                         <a class ="like_button fw-bold " data-postid="${posts[i].id}">
                             <i class="fas fa-thumbs-up" aria-hidden="true"></i>
                             <span>Mi Piace</span>
                         </a>
                     </div>
                     <div class="likes_counter">
-                        Piace a <b id ="${posts[i].id}">${posts[i].likes}</b> persone
+                        Piace a <b id ="${posts[i].id}" class="js_likes">${posts[i].likes}</b> persone
                     </div>
                 </div> 
             </div>            
@@ -116,5 +116,51 @@ const carouselWrapper = document.getElementById('container');
 carouselWrapper.innerHTML = carouselContent;
 
 
+//seleziono lo span per  il numero
+let likes = document.querySelectorAll(".js_likes");
 
+//seleziono i bottoni per l'evento
+const likesBtns = document.querySelectorAll(".likes_bt");
+
+//seleziono le  icone per cambiare il colore
+const iconBtns = document.querySelectorAll(".like_button");
+
+//creo un array per vedere a quale id post ho messo il like
+const arrayId = [];
+
+let count = false;
+
+
+
+likesBtns.forEach(( element, i, array) =>{
+    likesBtns[i].addEventListener("click", function () {
+        
+        if (!iconBtns[i].classList.contains("like_cliked")) {
+            //aggiungo  1 ad ogni click
+            posts[i]["likes"] += 1;
+            
+            likes[i].innerHTML = posts[i]["likes"];
+            console.log(posts[i]["likes"]);
+            //inserisco l' id che ho cliccato
+            arrayId.push(posts[i]["id"]);
+            console.log(arrayId);
+            //aggiungo la classe per cambiare il colore
+            iconBtns[i].classList.add("like_cliked");
+        } else {
+            //elimino 1 like ad ogni click
+            posts[i]["likes"] += -1;
+            //lo inserisco nell'html
+            likes[i].innerHTML = posts[i]["likes"];
+            console.log(posts[i]["likes"]);
+            //elimino quale id ho cliccato
+            console.warn(posts[i]["id"]);
+            console.log(arrayId.indexOf(posts[i]["id"]));
+            let indexArray = arrayId.indexOf(posts[i]["id"]);
+            arrayId.splice(indexArray, 1);
+            console.log(arrayId);
+            //elimino la classe per cambiare il colore
+            iconBtns[i].classList.remove("like_cliked");
+        }
+    })
+});
 
