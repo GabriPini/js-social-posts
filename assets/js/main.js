@@ -12,7 +12,8 @@ Creiamo il nostro array di oggetti che rappresentano ciascun post. Ogni post dov
 const posts = [{
     id: 1,
     author: {
-        name: "Grogu mando",
+        name: "Grogu",
+        surname: "mando",
         image: "https://images.everyeye.it/img-notizie/come-nato-baby-yoda-possibili-origini-bambino-the-mandalorian-v4-495100-900x900.jpg"
     },
     created: "01-19-2022",
@@ -23,7 +24,8 @@ const posts = [{
 {
     id: 2,
     author: {
-        name: "Mando The Mandalorian",
+        name: "Mando ",
+        surname: "The Mandalorian",
         image: "https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/the-mandalorian-baby-yoda-season-2-1600179914.jpg?resize=640:*"
     },
     created: "02-20-2022",
@@ -35,7 +37,8 @@ const posts = [{
 {
     id: 3,
     author: {
-        name: "Boba Fett",
+        name: "Boba",
+        surname: "Fett",
         image: "https://i.guim.co.uk/img/media/12329e6418ae6531565d9016968fc1d45d0f38eb/711_0_2683_1610/master/2683.jpg?width=1200&height=1200&quality=85&auto=format&fit=crop&s=3b5b8087ebd9840a6e961319b1f70077"
     },
     created: "03-10-2022",
@@ -47,7 +50,8 @@ const posts = [{
 {
     id: 4,
     author: {
-        name: "Old Yoda",
+        name: "Old",
+        surname: "Yoda",
         image: "https://www.liveabout.com/thmb/OHyay7RPSFHxasgJ9_Okz1Jhu-Q=/1167x1167/smart/filters:no_upscale()/yoda-56a8f97a3df78cf772a263b4.jpg"
     },
     created: "04-02-2022",
@@ -59,8 +63,9 @@ const posts = [{
 {
     id: 5,
     author: {
-        name: "Darth Maul",
-        image: "https://www.postavy.cz/foto/darth-maul-foto.jpg"
+        name: "Darth",
+        surname: "Maul",
+        image: " "
     },
     created: "04-05-2022",
     content: "You have forgotten me, but I will never forget you! You cannot imagine the depths I would go to stay alive. Fueled by my singular hatred for you.",
@@ -68,6 +73,7 @@ const posts = [{
     likes: 0,
 },
 ];
+
 
 /* Milestone 2
 Prendendo come riferimento il layout di esempio presente nell'html, stampiamo i post del nostro feed. */
@@ -79,18 +85,25 @@ function convertDate(str) {
     return dat;   
 }
 
+
+
+
 posts.forEach((post, i,) =>{
+    
+    let iniziali = posts[i].author.name.charAt(0).toUpperCase() + posts[i].author.surname.charAt(0).toUpperCase(); 
+    
 
     carouselContent += `
     <div class="post mb-5 p-3 bg-white">
             <div class="mb-2">
                 <div class="d-flex">                    
-                    <div class="me-3">
-                        <img class = "profile_pic" src="${posts[i].author.image}"
-                        alt = "${posts[i].author.name}">
+                    <div id="image" class="me-3">
+                        <img  class = "profile_pic" src="${posts[i].author.image}"
+                        alt="${iniziali}">
+                        
                     </div>
                     <div class="d-flex flex-column justify-content-center">
-                        <div class = "fw-bold">${posts[i].author.name}</div>
+                        <div class = "fw-bold">${posts[i].author.name} ${posts[i].author.surname}</div>
                         <div class="fs_7">${convertDate(posts[i].created)}</div>
                     </div>                    
                 </div>
@@ -112,7 +125,7 @@ posts.forEach((post, i,) =>{
                     </div>
                 </div> 
             </div>            
-        </div> `    
+     </div> `    
     
 })
 

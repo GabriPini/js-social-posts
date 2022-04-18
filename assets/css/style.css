@@ -24,6 +24,13 @@ h1 {
 .profile_pic {
     border-radius: 50%;
     max-width: 60px;
+    background-color: #023047;
+    color: white;
+    font-size: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
 }
 
 .like_button {
